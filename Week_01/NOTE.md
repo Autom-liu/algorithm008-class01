@@ -23,3 +23,30 @@ while (n > 0) {
 int r = A.length; // 行
 int c = A[0].length // 列
 ```
+
+## 977 有序数组的平方
+
+思路一： 若是负数，取绝对值，按插入有序数组的方式插入
+原地结果  空间复杂度O(1)  时间复杂度O(n^2)
+
+将数组首元素往后插入到有序数组内：
+
+```java
+int j = 1;
+int ele = A[0];
+for(j = 1; j < A.length && A[j] < ele; j ++) {
+  A[j-1] = A[j];
+}
+A[j-1] = ele;
+```
+
+将数组末元素往前插入到有序数组内：
+
+```java
+int j = A.length - 1;
+int ele = A[j];
+for(j = j - 1; j >= 0 && A[j] > ele; j--) {
+  A[j+1] = A[j];
+}
+A[j+1] = ele;
+```
