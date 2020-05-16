@@ -4,6 +4,37 @@ import java.util.*;
 
 public class ThreeSumLower {
 
+
+    private static Integer[] nums = new Integer[] {1,2,3,4};
+
+    private static List<List<Integer>> ans = new ArrayList<>();
+
+
+    public static void main(String[] args) {
+        recusive(0);
+        System.out.println(ans);
+    }
+
+    public static void recusive(int k) {
+        if (k >= nums.length) {
+            ans.add(new ArrayList<>(Arrays.asList(nums)));
+            return;
+        }
+
+        for (int i = k; i < nums.length; i++) {
+            swap(nums, i, k);
+            recusive(k+1);
+            swap(nums, i, k);
+        }
+    }
+
+    private static void swap(Integer[] arr, int i, int j) {
+        int t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
+
+
     /**
      * 三数之和的暴力解法：
      * 三重遍历
